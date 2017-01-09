@@ -24,8 +24,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
-        //
-
+        //-----此处为全局配置路由参数 如果加上以下一行，将会使所有叫id的字段进行正则匹配---------
+        //$router->pattern('id','[0-9]+');
+        //-----由于项目中id的命名不一定为id可能是user_id/adminId之类，所以除非命名为id，或配置在此，一般使用较少---
         parent::boot($router);
     }
 
