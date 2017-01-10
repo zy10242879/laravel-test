@@ -10,9 +10,9 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
+//此处为系统默认创建的路由，带中间件
 Route::group(['middleware' => ['web']], function () {
-
+    Route::get('admin/login','Admin\IndexController@login');
     Route::get('/', function () {
         return view('welcome');
     });
@@ -22,10 +22,10 @@ Route::group(['middleware' => ['web']], function () {
 //-------------路由群组----由于分文件夹index要加上admin/（不然多个index会载入错误）
 //Route::get('admin/index','Admin\IndexController@index');
 //Route::get('admin/login','Admin\IndexController@login');
-//****将以上↑↑两组路由同样类型的放入到路由群组中去↓↓****
-Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
-  Route::get('index','IndexController@index');
-  Route::get('login','IndexController@login');
+//****将以上↑↑两组路由同样类型的放入到路由群组中去↓↓*****中间件（重要）↓↓↓*************
+Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>['web','admin.login']],function(){
+  Route::get('index','IndexController@index'); //web是最基本的中间件↑↑↑引入后才可以使用session及csrf
+
   //通过php artisan route:list可查看所有路由
   //--------资源路由（重要）同时创建增删改查显示等各种方法------------
   //         创建文章↓↓资源路由，控制器↓↓写法 laravel.app/admin/article/(index,store,create,show,edit...)
@@ -34,7 +34,13 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
   Route::resource('admin', 'AdminController');
   Route::resource('comment', 'CommentController');
 });
-
+//--------------***中间件的创建***--------------
+//步骤：
+//①在Http/Kernel.php文件中定义中间件　例：
+  //创建后台登录时要验证session的中间件
+  //'admin.login'=>[\App\Http\Middleware\AdminLogin::class,],
+//②创建中间件：shell中在项目目录用php artisan make:middleware AdminLogin
+//③在中间件写入操作逻辑
 
 //-----子域名绑定(不常用)查看文档即可（以下为用法）------
 //Route::group([/*'prefix'=>'admin','namespace'=>'Admin',*/'domain'=>'news.laravel.app'],function(){});
