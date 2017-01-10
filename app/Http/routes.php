@@ -18,6 +18,20 @@ Route::group(['middleware' => ['web']], function () {
     });
 
 });
+//-----------基础控制器的创建和路由的操作----------
+//****手动创建***
+//Http/Controllers/创建控制器名IndexController　已使用控制器分文件夹
+Route::get('index','Admin\IndexController@index');
+//********自动创建（推荐）********
+//使用shell进入虚拟机项目目录中，使用artisan命令来完成
+//[root@localhost laravel]# php artisan make:controller UserController
+
+//-----------控制器分文件夹--------
+//在Http/Controllers下创建Admin文件夹
+//注意修改：①路由要修改如下　②User控制器中的命名空间 ③控制器use引入Controller
+Route::get('user','Admin\UserController@user');
+
+
 //---------建立6个基础路由，及2个多重路由，并通过postman进行调试----------
 //使用方法　laravel.app/request 选择get/post...
 //主要了解 **get** **post** **any**
