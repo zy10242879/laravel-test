@@ -18,6 +18,12 @@ Route::group(['middleware' => ['web']], function () {
     });
 
 });
+//------------路由的命名（不常用）-----------
+//命名路由为生成 URL 或重定向提供了便利                        名字随意↓↓
+Route::get('index', 'Admin\IndexController@index')->name('AdminIndex');
+//通过函数route('AdminIndex')可以显示地址：http://laravel.app/index
+//此处需要将下面的手动创建 index　路由注释，不然会运行到下方
+
 //-----------基础控制器的创建和路由的操作----------
 //****手动创建***
 //Http/Controllers/创建控制器名IndexController　已使用控制器分文件夹
