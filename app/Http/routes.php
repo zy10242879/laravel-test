@@ -26,15 +26,24 @@ Route::group(['middleware' => ['web']], function () {
 Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
   Route::get('index','IndexController@index');
   Route::get('login','IndexController@login');
+  //通过php artisan route:list可查看所有路由
+  //--------资源路由（重要）同时创建增删改查显示等各种方法------------
+  //         创建文章↓↓资源路由，控制器↓↓写法 laravel.app/admin/article/(index,store,create,show,edit...)
+  Route::resource('article', 'ArticleController');
+  Route::resource('category', 'CategoryController');
+  Route::resource('admin', 'AdminController');
+  Route::resource('comment', 'CommentController');
 });
+
+
 //-----子域名绑定(不常用)查看文档即可（以下为用法）------
-Route::group([/*'prefix'=>'admin','namespace'=>'Admin',*/'domain'=>'news.laravel.app'],function(){});
+//Route::group([/*'prefix'=>'admin','namespace'=>'Admin',*/'domain'=>'news.laravel.app'],function(){});
 //-----命名路由群见文档（不常用）-------
-Route::group(['as' => 'admin::'], function () {
-  Route::get('dashboard', ['as' => 'dashboard', function () {
+//Route::group(['as' => 'admin::'], function () {
+//  Route::get('dashboard', ['as' => 'dashboard', function () {
     // 路由被命名为 "admin::dashboard"
-  }]);
-});
+//  }]);
+//});
 //------------路由的命名（不常用）-----------
 //命名路由为生成 URL 或重定向提供了便利                        名字随意↓↓
 //Route::get('index', 'Admin\IndexController@index')->name('AdminIndex');
