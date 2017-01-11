@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\DB;
+
 
 class ViewController extends Controller
 {
@@ -49,6 +51,13 @@ class ViewController extends Controller
     }
 
   public function layout(){
+    //用以下代码测试数据库是否连接成功
+//    $pdo = DB::connection()->getPdo();
+//    dd($pdo);
+    //使用数据库进行数据查询
+    $users = DB::table('user')->where('user_id','>',2)->get();
+    dd($users);
+
     return view('layout');
   }
 }

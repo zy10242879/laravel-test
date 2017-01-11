@@ -28,6 +28,7 @@ Route::get('view','ViewController@view');
 //-----------blade模板引擎的使用---------
 Route::get('index','ViewController@index'); //继承模板的使用方法
 Route::get('layout','ViewController@layout'); //引入模板的使用方法
+//在以上layout中写入数据库的链接调试，需要对.env文件进行数据库配置
 
 //-------------路由群组----由于分文件夹index要加上admin/（不然多个index会载入错误）
 //Route::get('admin/index','Admin\IndexController@index');
