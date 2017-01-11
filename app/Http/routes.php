@@ -21,10 +21,13 @@ Route::group(['middleware' => ['web']], function () {
 
 //-----------视图（路由->控制器->载入视图<传参>）----------------
 //步骤：1.创建路由
-Route::get('view','ViewController@index');
+Route::get('view','ViewController@view');
 //    2.创建控制器 shell  php artisan make:controller ViewController 并在控制器中载入视图用view()
 //    3.在resources/views下建立视图view.blade.php  必需加blade由于通过blade模板引擎来进行操作
 //    4.查看resources/views/view.blade.php中３种传参的方式
+//-----------blade模板引擎的使用---------
+Route::get('index','ViewController@index'); //继承模板的使用方法
+Route::get('layout','ViewController@layout'); //引入模板的使用方法
 
 //-------------路由群组----由于分文件夹index要加上admin/（不然多个index会载入错误）
 //Route::get('admin/index','Admin\IndexController@index');

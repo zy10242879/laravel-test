@@ -8,7 +8,7 @@ use App\Http\Requests;
 
 class ViewController extends Controller
 {
-    public function index(){
+    public function view(){
       //return view('view');//载入视图
       //传参方式一：不常用（原因为仅传递一个参数）
 //      $name = '小王';
@@ -39,4 +39,12 @@ class ViewController extends Controller
       //传参方式三：常用方式（需要修改视图文件中的参数写法，以数组进行写入）
       return view('view',compact('data','title','str','script'));
     }
+
+  public function index(){
+    return view('index');
+    }
+
+  public function layout(){
+    return view('layout');
+  }
 }
