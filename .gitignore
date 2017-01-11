@@ -3,4 +3,4 @@
 /public/storage
 Homestead.yaml
 Homestead.json
-.env
+#.env   (注释掉后，就可以通过git提交了，也可以在下面添加其它不需要提交的目录及文件)

@@ -61,7 +61,8 @@ return [
             'password' => env('DB_PASSWORD', ''),
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
-            'prefix' => '',
+//            'prefix' => '',  将此配置项加入.env文件中 此改成如下 其它配置同样可以这样操作
+            'prefix' => env('DB_PREFIX', ''),
             'strict' => false,
             'engine' => null,
         ],

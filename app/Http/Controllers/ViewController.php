@@ -41,6 +41,10 @@ class ViewController extends Controller
     }
 
   public function index(){
+    //查看配置项内容的方法
+          //这个配置是自己刚刚添加的前缀，打印出来看下
+    echo config('database.connections.mysql.prefix'),'<br />';
+    echo config('app.debug'),'<br />';//这个配置就是.env中是否开启调试模式
     return view('index');
     }
 
