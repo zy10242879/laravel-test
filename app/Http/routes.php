@@ -23,7 +23,7 @@ Route::group(['middleware' => ['web']], function () {
 //步骤：1.创建路由
 Route::get('view','ViewController@index');
 //    2.创建控制器 shell  php artisan make:controller ViewController 并在控制器中载入视图用view()
-//    3.在resources/views下建立视图view.blade.php  必需加blade由于通过blade类来调用的
+//    3.在resources/views下建立视图view.blade.php  必需加blade由于通过blade模板引擎来进行操作
 //    4.查看resources/views/view.blade.php中３种传参的方式
 
 //-------------路由群组----由于分文件夹index要加上admin/（不然多个index会载入错误）

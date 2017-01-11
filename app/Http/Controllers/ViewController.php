@@ -21,11 +21,22 @@ class ViewController extends Controller
         $data=[
           'name'=>'小王',
           'age'=>'25',
+          'score'=>60,
+          'num'=>10,
+          'article'=>[
+            'news 1',
+            'news 2',
+            'news 3',
+            'news 4',
+          ],
+          'news'=>[],
         ];
+      $str = null;
+      $script = '<script>document.write("laravel不错")</script>';
 //      return view('view',$data);
       //方式二中：如果加入以下内容，将$title数据压入$data中是不合理的
       $title = '正在使用laravel';
       //传参方式三：常用方式（需要修改视图文件中的参数写法，以数组进行写入）
-      return view('view',compact('data','title'));
+      return view('view',compact('data','title','str','script'));
     }
 }
