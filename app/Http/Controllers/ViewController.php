@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Model\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -55,8 +56,10 @@ class ViewController extends Controller
 //    $pdo = DB::connection()->getPdo();
 //    dd($pdo);
     //使用数据库进行数据查询
-    $users = DB::table('user')->where('user_id','>',2)->get();
-    dd($users);
+//    $users = DB::table('user')->where('user_id','>',2)->get();
+//    dd($users);
+    $user = User::find(1);
+    dd($user);
 
     return view('layout');
   }
